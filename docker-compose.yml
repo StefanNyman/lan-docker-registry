@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3'
 services: 
     registry:
         image: registry:2
@@ -6,12 +6,8 @@ services:
             - "80:5000"
         restart: always
         volumes: 
-            - type: volume
-              source: registry-data
-              target: /var/lib/registry
-            - type: bind
-              source: ./registry-config.yml
-              target: /etc/docker/registry/config.yml
+            - "registry-data:/var/lib/registry"
+            - "./registry-config.yml:/etc/docker/registry/config.yml"
         networks: 
             registry:
                 ipv4_address: 192.168.128.10
@@ -19,12 +15,8 @@ services:
         image: redis:alpine
         command: redis-server /etc/redis.conf
         volumes: 
-            - type: volume
-              source: redis-data
-              target: /data
-            - type: bind
-              source: ./redis.conf
-              target: /etc/redis.conf
+            - "redis-data:/data"
+            - "./redis.conf:/etc/redis.conf"
         ports: 
             - "6379"
         networks: 
