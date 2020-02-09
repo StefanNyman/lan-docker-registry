@@ -1,7 +1,7 @@
 redis:
-    password: <master-password>.BIG.y-1-k-3-s
-    ip: 192.168.128.11
+  password: <master-password>.BIG.y-1-k-3-s
+  ip: 192.168.128.11
 registry:
-    ip: 192.168.128.10
+  ip: 192.168.128.10
 compose:
-    subnet: 192.168.128.0/24
+  subnet: 192.168.128.0/24
