@@ -1,0 +1,5 @@
+redis:
+    password: <master-password>.BIG.y-1-k-3-s
+    ip: 192.168.128.11
+compose:
+    subnet: 192.168.128.0/24
