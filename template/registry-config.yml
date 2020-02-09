@@ -21,6 +21,6 @@ health:
     threshold: 3
 redis:
     addr: redis:6379
-    password: <master-password>.BIG.y-1-k-3-s
+    password: <WILL_BE_OVERRIDDEN>
 proxy:
     remoteurl: https://registry-1.docker.io
