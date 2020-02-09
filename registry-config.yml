@@ -1,0 +1,24 @@
+version: "0.1"
+log:
+  fields:
+    service: registry
+storage:
+  cache:
+    blobdescriptor: redis
+  filesystem:
+    rootdirectory: /var/lib/registry
+http:
+  addr: :5000
+  secret: bigyikes
+  headers:
+    X-Content-Type-Options: [nosniff]
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+redis:
+    addr: redis:6379
+    password: <master-password>.BIG.y-1-k-3-s
+proxy:
+    remoteurl: https://registry-1.docker.io

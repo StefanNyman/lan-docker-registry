@@ -1,0 +1,8 @@
+{
+    "registry-mirrors": [
+        "http://ubuntu.local"
+    ],
+    "insecure-registries": [
+        "ubuntu.local"
+    ]
+}
