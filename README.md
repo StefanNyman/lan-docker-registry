@@ -8,7 +8,7 @@ This project attempts to simplify creating a docker pull through cache for local
 
 ## Installation
 
-- Run `make.py` file to generate proper config files from templates in template dir.
+- Run `make.py` to generate proper config files from templates in template dir.
 - Run `docker-compose up -d` to start the registry server.
 - Add contents of `daemon.json` file to the __client__ docker daemon configuration.
 
