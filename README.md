@@ -2,6 +2,13 @@
 
 This project attempts to simplify creating a docker pull through cache for local environments.
 
+## Requirements
+
+- `docker-compose`
+- `pyyaml`
+- `python3`
+- `docker`
+
 ## Configuration
 
 - If necessary, edit `config.yml` file.
