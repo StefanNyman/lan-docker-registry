@@ -22,7 +22,10 @@ def generate_redis_config(filename: str, config: dict) -> None:
 
 
 def generate_docker_compose(filename: str, config: dict) -> None:
-    pass
+    compose = read_yaml(filename)
+    compose['services']['registry']['networks']['registry']['ipv4_address'] = config['registry']['ip']
+
+    print(config)
 
 
 config_filename = 'config.yml'
@@ -30,4 +33,4 @@ compose_filename = 'docker-compose.yml'
 redis_filename = 'redis.conf'
 
 config = read_yaml(config_filename)
-registry_config = read_yaml(f'template/{config_filename}')
+generate_docker_compose(f"template/{compose_filename}", config)
