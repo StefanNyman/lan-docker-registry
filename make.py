@@ -11,6 +11,7 @@ registry_config_filename = 'registry-config.yml'
 
 
 def read_redis_config(filename: str) -> List[str]:
+    """Read Redis configuration into a list of lines."""
     try:
         with open(filename) as f:
             return [line.strip() for line in f.readlines()]
@@ -20,6 +21,7 @@ def read_redis_config(filename: str) -> List[str]:
 
 
 def generate_redis_config(filename: str, config: dict, out_file: str) -> None:
+    """Inserts values to appropriate places in redis config"""
     lines = read_redis_config(filename)
     for index in range(len(lines)):
         if lines[index].startswith('bind'):
@@ -32,15 +34,18 @@ def generate_redis_config(filename: str, config: dict, out_file: str) -> None:
 
 
 def read_yaml(filename: str) -> dict:
+    """Read a yaml file to a native python dict."""
     try:
         with open(filename) as f:
             return yaml.safe_load(f)
-    except OSError:
+    except OSError as e:
         print(f"Error reading {filename}, exiting now.", file=sys.stderr)
+        print(e)
         sys.exit(1)
 
 
 def write_file(filename: str, content: str):
+    """Write string to the given file"""
     try:
         with open(filename, 'w') as f:
             f.write(content)
@@ -51,6 +56,7 @@ def write_file(filename: str, content: str):
 
 
 def generate_registry_config(filename: str, config: dict, out_file: str) -> None:
+    """Generate docker registry config."""
     registry = read_yaml(filename)
     registry['redis']['password'] = config['redis']['password']
     write_file(out_file, yaml.safe_dump(registry))
