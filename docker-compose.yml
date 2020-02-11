@@ -10,7 +10,7 @@ services:
             - "./registry-config.yml:/etc/docker/registry/config.yml"
         networks: 
             registry:
-                ipv4_address: <WILL_BE_OVERRIDDEN>
+                ipv4_address: 192.168.128.10
     redis:
         image: redis:alpine
         command: redis-server /etc/redis.conf
@@ -21,7 +21,7 @@ services:
             - "6379"
         networks: 
             registry:
-                ipv4_address: <WILL_BE_OVERRIDDEN>
+                ipv4_address: 192.168.128.11
 volumes: 
     registry-data:
     redis-data:
@@ -29,4 +29,4 @@ networks:
     registry:
         ipam:
             config: 
-                - subnet: <WILL_BE_OVERRIDDEN>
+                - subnet: 192.168.128.0/24
